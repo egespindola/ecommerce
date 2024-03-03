@@ -1,0 +1,52 @@
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwMCwidXNlcm5hbWUiOiJqb2huIiwiaWF0IjoxNzA4MjM1NTYyLCJleHAiOjE3MDgyMzkxNjJ9.eTopx0Pp9BHPSNzSKuHTU8LZ7g1F4S7n6HUmSvsDyQg
+
+###
+GET http://localhost:3000/product
+
+###
+GET http://localhost:3000/product/bccd6983-fa8d-4128-92b1-602810afa9b8
+
+###
+POST http://localhost:3000/product  
+Content-Type: application/json
+
+{   
+    "name": "Product 1",
+    "description": "Description 1",
+    "price": 10.0,
+    "image_url": "http://localhost:9000/products/1.png"
+}
+
+
+###
+GET http://localhost:3000/orders
+Authorization: Bearer {{TOKEN}}
+
+###
+POST http://localhost:3000/orders  
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    "items": [
+        {
+          "quantity": 6,
+          "product_id": "04c4353a-3f6d-4272-a8f2-44b82c05ecc0"  
+        },
+        {
+          "quantity": 7,
+          "product_id": "0afa7630-4fc1-4d69-beed-4f8f15becadc"  
+        }
+    ],
+    "card_hash": "123yui456zxc"
+}
+
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "john",
+  "password": "doe"
+}
